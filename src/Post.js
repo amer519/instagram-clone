@@ -35,6 +35,16 @@ function Post({postId, user, username, caption, imageUrl}) {
         });
         setComment('');
     }
+    // DELETING POST
+    const onDelete = () => {
+    db.collection("posts").doc(postId).delete().then(function() {
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+}
+    
+    
 
     return (
         <div className="post">
@@ -81,6 +91,12 @@ function Post({postId, user, username, caption, imageUrl}) {
                     </button>
             </form>
             )}
+
+            {/* DELETE BUTTON */}
+            <div className='post__delete'>
+                <button onClick={() => {onDelete(postId) }}><i class="fa fa-trash"></i></button>
+
+            </div>
 
             
         </div>

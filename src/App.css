@@ -19,6 +19,12 @@
   justify-content: space-between;
 }
 
+.app__upload {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
 .app__headerImage {
   object-fit: contain;
 }

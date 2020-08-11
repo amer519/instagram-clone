@@ -51,3 +51,10 @@
 .post__comments {
     padding: 20px;
 }
+
+.post__delete {
+    flex: 0;
+    border: none;
+    border-top: 1px solid lightgray;
+    color: #6082a3;
+}
