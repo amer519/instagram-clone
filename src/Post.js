@@ -15,6 +15,7 @@ function Post({postId, user, username, caption, imageUrl}) {
             .collection('posts')
             .doc(postId)
             .collection('comments')
+            .orderBy('timestamp', 'desc')
             .onSnapshot((snapshot) => {
                 setComments(snapshot.docs.map((doc) => doc.data()));
             });
@@ -40,7 +41,7 @@ function Post({postId, user, username, caption, imageUrl}) {
             <div className='post__header'>
             <Avatar 
                 className='post__avatar'
-                alt='amer'
+                alt={username}
                 src="/static/images/avatar/1.jpg"
                 />
             <h3>{username}</h3>
@@ -61,7 +62,8 @@ function Post({postId, user, username, caption, imageUrl}) {
                 ))}
             </div>
 
-            <form className='post__commentBox'>
+            {user && (
+                <form className='post__commentBox'>
                 <input
                     className='post__input'
                     type='text'
@@ -78,6 +80,9 @@ function Post({postId, user, username, caption, imageUrl}) {
                     Post
                     </button>
             </form>
+            )}
+
+            
         </div>
     )
 }
