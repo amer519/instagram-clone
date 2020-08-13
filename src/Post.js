@@ -3,10 +3,13 @@ import './Post.css';
 import Avatar from "@material-ui/core/Avatar";
 import { db } from './firebase';
 import firebase from "firebase";
+import LikeButton from './LikeButton'
 
 function Post({postId, user, username, caption, imageUrl}) {
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
+    //likes
+    // const [likes, setLikes] = useState(0);
 
     useEffect(() => {
         let unsubscribe;
@@ -43,6 +46,38 @@ function Post({postId, user, username, caption, imageUrl}) {
         console.error("Error removing document: ", error);
     });
 }
+
+    //Liking Post
+
+    // const onLike = () => {
+    //     db.collection("posts").doc(postId);
+    //     return onLike.update({
+    //         let newCount = count + 1
+    //         setLikes({
+    //         count: newCount
+    // })  
+    //     })   
+    // }
+    // useEffect(() => {
+    //     let unsubscribe;
+    //     if (postId) {
+    //         unsubscribe = db
+    //         .collection('posts')
+    //         .doc(postId)
+    //         .collection('likes')
+    //         .orderBy('timestamp', 'desc')
+    //         .onSnapshot((snapshot) => {
+    //             setLikes(snapshot.docs.map((doc) => doc.data()));
+    //         });
+    //     }
+    //     return () => {
+    //         unsubscribe();
+    //     };
+    // }, [postId]);
+
+    
+
+
     
     
 
@@ -95,6 +130,14 @@ function Post({postId, user, username, caption, imageUrl}) {
             {/* DELETE BUTTON */}
             <div className='post__delete'>
                 <button onClick={() => {onDelete(postId) }}><i class="fa fa-trash"></i></button>
+
+            {/* Like Button */}
+            {/* <button onClick={() => {onLike(postId) }}>Like</button> */}
+            <LikeButton postId={postId} />
+            {/* <button onClick={this.addLike}>Likes: {this.state.likes} </button> */}
+
+            
+
 
             </div>
 

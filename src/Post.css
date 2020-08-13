@@ -57,4 +57,5 @@
     border: none;
     border-top: 1px solid lightgray;
     color: #6082a3;
+    justify-content: space-between;
 }

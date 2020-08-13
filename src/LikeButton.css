@@ -1,0 +1,16 @@
+.btn-primary {
+    background-color: lightskyblue;
+    border-color: white;
+    display: flex;
+    flex-direction: column;
+    
+
+  }
+  
+  #example {
+    margin: 3rem;
+  }
+  
+  /* .customContainer {
+    border: 1px solid black;
+  } */
