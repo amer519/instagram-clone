@@ -14,3 +14,13 @@
   /* .customContainer {
     border: 1px solid black;
   } */
+
+  .fa-heart-o {
+    color: red;
+    cursor: pointer;
+  }
+  
+  .fa-heart {
+    color: red;
+    cursor: pointer;
+  }

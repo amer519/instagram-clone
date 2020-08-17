@@ -6,39 +6,27 @@ import firebase from "firebase";
 import likebutton from './LikeButton.css'
 
 class LikeButton extends React.Component {
-    constructor() {
-    super();
-      this.state = {
-        liked: false
-      };
-      this.handleClick = this.handleClick.bind(this);
-    } 
+    constructor(props) {
+      super(props);
+      this.state = {value: 0};
+      this.buttonClicked = this.buttonClicked.bind(this);
+    }
     
-    handleClick() {
-      this.setState({
-        liked: !this.state.liked
-      });
+    buttonClicked(event) {
+      this.setState({value: this.state.value+1});
     }
     
     render() {
-      const text = this.state.liked ? 'liked' : 'haven\'t liked';
-      const label = this.state.liked ? 'Unlike' : 'Like'
       return (
-        <div className="customContainer">
-          <button className="btn-primary" onClick={this.handleClick}>
-            {label}</button>
-          <p>
-            you {text} this
-          </p>
+          <div>
+          <div>{this.state.value}</div>
+          <button onClick={this.buttonClicked}><i class='fa fa-heart'></i></button>
         </div>
       );
     }
   }
   
-//   ReactDOM.render(
-//     ,
-//     document.getElementById('example')
-//   )
+
 
     export default LikeButton
 
