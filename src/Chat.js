@@ -73,7 +73,7 @@ function Chat({user, username }) {
 
                 {comments.map((comment) => (
                     <p>
-                        <strong>{comment.username}</strong> {comment.text}
+                        <strong style={{marginRight: '20px'}}>{comment.username}:</strong> {comment.text}
                     </p>
                 ))}
             </div>
