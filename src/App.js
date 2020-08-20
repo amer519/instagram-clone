@@ -7,6 +7,7 @@ import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core';
 import ImageUpload from './ImageUpload';
 import InstagramEmbed from 'react-instagram-embed';
+import Chat from './Chat'
 
 function getModalStyle() {
   const top = 50;
@@ -204,8 +205,19 @@ function App() {
           onAfterRender={() => {}}
           onFailure={() => {}}
         />
+        <div className='app__reels'>
+       <a target ='_blank' href='https://ig-reels-800b0.web.app/'>🎥IG Reels</a>
+       
+       </div>
+       {user && <Chat username={user.displayName}  />}
         </div>
+
+        
+
+        
         </div>
+
+        
 
         
         <div className='app__upload'>
@@ -215,6 +227,9 @@ function App() {
             <h3>Sorry you need to be logged in to upload</h3>
         )}
       </div>
+      
+      
+      
     </div>
   );
 }

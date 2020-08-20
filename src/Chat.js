@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import './Post.css';
+import './Chat.css';
 import Avatar from "@material-ui/core/Avatar";
 import { db } from './firebase';
 import firebase from "firebase";
 import LikeButton from './LikeButton'
 
-function Post({postId, user, username, caption, imageUrl}) {
+function Chat({user, username }) {
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
     //likes
     // const [likes, setLikes] = useState(0);
+    const postId = 'w0LGb1B5oGoPCVA0s2MZ'
 
     useEffect(() => {
         let unsubscribe;
@@ -33,7 +34,7 @@ function Post({postId, user, username, caption, imageUrl}) {
 
         db.collection('posts').doc(postId).collection('comments').add({
             text: comment,
-            username: user.displayName,
+            username: username,
             timestamp: firebase.firestore.FieldValue.serverTimestamp() 
         });
         setComment('');
@@ -47,33 +48,7 @@ function Post({postId, user, username, caption, imageUrl}) {
     });
 }
 
-    //Liking Post
-
-    // const onLike = () => {
-    //     db.collection("posts").doc(postId);
-    //     return onLike.update({
-    //         let newCount = count + 1
-    //         setLikes({
-    //         count: newCount
-    // })  
-    //     })   
-    // }
-    // useEffect(() => {
-    //     let unsubscribe;
-    //     if (postId) {
-    //         unsubscribe = db
-    //         .collection('posts')
-    //         .doc(postId)
-    //         .collection('likes')
-    //         .orderBy('timestamp', 'desc')
-    //         .onSnapshot((snapshot) => {
-    //             setLikes(snapshot.docs.map((doc) => doc.data()));
-    //         });
-    //     }
-    //     return () => {
-    //         unsubscribe();
-    //     };
-    // }, [postId]);
+   
 
     
 
@@ -84,19 +59,15 @@ function Post({postId, user, username, caption, imageUrl}) {
     return (
         <div className="post">
             <div className='post__header'>
-            <Avatar 
-                className='post__avatar'
-                alt={username}
-                src="/static/images/avatar/1.jpg"
-                />
-            <h3>{username}</h3>
+            <div className='chat__header'>
+            <h3>Chat</h3>
+            </div>
         </div>
-            <img className="post__image" src={imageUrl}
-            alt=""
-            />
+        
+            
             
         
-            <h4 className='post__text'><strong>{username}</strong> {caption}</h4>
+            
 
             <div className='post__comments'>
 
@@ -107,12 +78,12 @@ function Post({postId, user, username, caption, imageUrl}) {
                 ))}
             </div>
 
-            {user && (
+            {username && (
                 <form className='post__commentBox'>
                 <input
                     className='post__input'
                     type='text'
-                    placeholder='Add comment...'
+                    placeholder='Message...'
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     />
@@ -122,28 +93,19 @@ function Post({postId, user, username, caption, imageUrl}) {
                     type='submit'
                     onClick={postComment}
                     >
-                    Post
+                    Send
                     </button>
             </form>
             )}
-            <div className='post__likeanddelete'>
-            {/* DELETE BUTTON */}
-            <div className='post__delete'>
-                <button onClick={() => {onDelete(postId) }}><i class="fa fa-trash"></i></button>
-
-            {/* Like Button */}
-            {/* <button onClick={() => {onLike(postId) }}>Like</button> */}
-            <LikeButton postId={postId} />
-            {/* <button onClick={this.addLike}>Likes: {this.state.likes} </button> */}
-            </div>    
+            
             
 
 
-            </div>
+            
 
             
         </div>
     )
 }
 
-export default Post
+export default Chat

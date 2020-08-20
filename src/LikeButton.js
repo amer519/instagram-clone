@@ -18,7 +18,7 @@ class LikeButton extends React.Component {
     
     render() {
       return (
-          <div>
+          <div style={{display: 'flex'}}>
           <div>{this.state.value}</div>
           <button onClick={this.buttonClicked}><i class='fa fa-heart'></i></button>
         </div>

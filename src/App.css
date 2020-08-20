@@ -44,3 +44,13 @@
 .app__postsRight {
   margin-left: 20px;
 }
+
+.app__reels {
+padding-left: 90px;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-weight: bolder;
+font-size: xx-large;
+color: black;
+text-shadow: 2px 2px 5px;
+padding-bottom: 20px;
+}
